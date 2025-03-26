@@ -115,7 +115,7 @@ host=localhost (или ваш хост)
 ```
 ## Запустите программу:
 ```bash
-python main.py
+python journal.py
 ```
 
 
