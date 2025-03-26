@@ -1,7 +1,14 @@
-
 # Журнал инженеров по АСУ
 
-Десктопное приложение для ведения журнала смен инженеров АСУ с поддержкой базы данных PostgreSQL, голосового ввода, экспорта в Word и отправки по email.
+Это десктопное приложение, разработанное на Python с использованием PyQt5, предназначенное для ведения журнала смен инженеров в автоматизированных системах управления (АСУ). Программа интегрируется с базой данных PostgreSQL для хранения данных, поддерживает голосовой ввод, экспорт отчетов в Word и отправку по email через Outlook.
+
+## Требования для запуска:
+   Установленный Python 3.8+.
+   База данных PostgreSQL с созданной схемой shift_journal_db.
+   Установленные зависимости (см. ниже).
+   Настроенный микрофон для голосового ввода.
+   Microsoft Outlook для отправки писем (опционально).
+   Файл ресурсов resources.py (сгенерированный через pyrcc5 из .qrc, если используются иконки).
 
 ## Основные функции
 - Авторизация и управление записями в журнале.
@@ -15,19 +22,31 @@
 - `PyQt5` — графический интерфейс.
 - `python-docx` — создание Word-документов.
 - `pywin32` — интеграция с Outlook.
-- `speech_recognition`, `pyaudio` — голосовой ввод.
-- `pyqtgraph`, `numpy` — визуализация звука.
+- `speech_recognition` — распознавание речи.
+- `pyaudio` — запись звука с микрофона.
+- `pyqtgraph` — визуализация аудиосигнала.
+- `numpy` — обработка аудиоданных.
+- `configparser` — работа с конфигурационными файлами.
+- `logging` — логирование событий (встроенная библиотека Python, установка не требуется).
+- `os`, `sys` — работа с системой (встроенные библиотеки, установка не требуется).
 
 ## Установка
-1. Установите Python 3.8+ и PostgreSQL.
-2. Установите зависимости:
-   ```bash
-   pip install psycopg2-binary PyQt5 python-docx pywin32 speechrecognition pyaudio pyqtgraph numpy
-
-## Склонируйте репозиторий:
-  ```bash
-  git clone https://github.com/yourusername/ShiftJournal.git
-
-##   Запустите:
-  ```bash
-   python main.py
+1. **Установите PostgreSQL**:  
+   - Скачайте и установите PostgreSQL с официального сайта (https://www.postgresql.org/download/).  
+   - Создайте базу данных с именем `shift_journal_db`, куда будут вставляться записи журнала и инженеров.  
+   - Настройте пользователя и пароль для доступа (например, через `pgAdmin` или командную строку).  
+2. **Установите Python 3.8+**: Скачайте с python.org, если ещё не установлено.  
+3. **Установите зависимости**:  
+   - Установите все библиотеки одной командой:  
+     ```bash
+     pip install psycopg2-binary PyQt5 python-docx pywin32 speechrecognition pyaudio pyqtgraph numpy configparser
+   - Или установите библиотеки по отдельности:
+     pip install psycopg2-binary  # Для PostgreSQL
+     pip install PyQt5            # Для GUI
+     pip install python-docx      # Для Word-документов
+     pip install pywin32          # Для Outlook
+     pip install speechrecognition # Для распознавания речи
+     pip install pyaudio          # Для записи звука
+     pip install pyqtgraph        # Для графиков
+     pip install numpy            # Для обработки данных
+     pip install configparser     # Для конфигурационных файлов
