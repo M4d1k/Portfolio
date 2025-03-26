@@ -3,12 +3,12 @@
 Это десктопное приложение, разработанное на Python с использованием PyQt5, предназначенное для ведения журнала смен инженеров в автоматизированных системах управления (АСУ). Программа интегрируется с базой данных PostgreSQL для хранения данных, поддерживает голосовой ввод, экспорт отчетов в Word и отправку по email через Outlook.
 
 ## Требования для запуска:
-   Установленный Python 3.8+.
-   База данных PostgreSQL с созданной схемой shift_journal_db.
-   Установленные зависимости (см. ниже).
-   Настроенный микрофон для голосового ввода.
-   Microsoft Outlook для отправки писем (опционально).
-   Файл ресурсов resources.py (сгенерированный через pyrcc5 из .qrc, если используются иконки).
+- Установленный Python 3.8+.
+- База данных PostgreSQL с созданной схемой shift_journal_db.
+- Установленные зависимости (см. ниже).
+- Настроенный микрофон для голосового ввода.
+- Microsoft Outlook для отправки писем (опционально).
+- Файл ресурсов resources.py (сгенерированный через pyrcc5 из .qrc, если используются иконки).
 
 ## Основные функции
 - Авторизация и управление записями в журнале.
@@ -35,18 +35,45 @@
    - Скачайте и установите PostgreSQL с официального сайта (https://www.postgresql.org/download/).  
    - Создайте базу данных с именем `shift_journal_db`, куда будут вставляться записи журнала и инженеров.  
    - Настройте пользователя и пароль для доступа (например, через `pgAdmin` или командную строку).  
-2. **Установите Python 3.8+**: Скачайте с python.org, если ещё не установлено.  
-3. **Установите зависимости**:  
-   - Установите все библиотеки одной командой:  
-     ```bash
-     pip install psycopg2-binary PyQt5 python-docx pywin32 speechrecognition pyaudio pyqtgraph numpy configparser
-   - Или установите библиотеки по отдельности:
-     pip install psycopg2-binary  # Для PostgreSQL
-     pip install PyQt5            # Для GUI
-     pip install python-docx      # Для Word-документов
-     pip install pywin32          # Для Outlook
-     pip install speechrecognition # Для распознавания речи
-     pip install pyaudio          # Для записи звука
-     pip install pyqtgraph        # Для графиков
-     pip install numpy            # Для обработки данных
-     pip install configparser     # Для конфигурационных файлов
+2. **Установите Python 3.8+**: Скачайте с python.org, если ещё не установлено.
+   
+## 3. Установите зависимости
+
+Вы можете установить все необходимые библиотеки одной командой:
+
+```bash
+pip install psycopg2-binary PyQt5 python-docx pywin32 speechrecognition pyaudio pyqtgraph numpy configparser
+```
+
+Или установить их по отдельности, скопировав команды из файла `requirements_install.sh`:
+
+```bash
+bash requirements_install.sh
+```
+
+Создайте файл `requirements_install.sh` и вставьте в него следующий код:
+
+```bash
+#!/bin/bash
+
+pip install psycopg2-binary  # Для работы с PostgreSQL
+pip install PyQt5            # Для создания GUI
+pip install python-docx      # Для работы с Word-документами
+pip install pywin32          # Для взаимодействия с Outlook
+pip install speechrecognition # Для распознавания речи
+pip install pyaudio          # Для записи звука
+pip install pyqtgraph        # Для построения графиков
+pip install numpy            # Для обработки данных
+pip install configparser     # Для работы с конфигурационными файлами
+```
+
+После создания файла, сделайте его исполняемым:
+
+```bash
+chmod +x requirements_install.sh
+```
+
+И затем запустите:
+
+```bash
+./requirements_install.sh
